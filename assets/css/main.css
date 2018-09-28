@@ -3654,3 +3654,52 @@ button:disabled,
 	height: 5em;
 	margin-right: 1.5em
 }
+
+
+
+
+/* body .gist .gist-file {
+    margin-bottom: 0;
+    border: 1px dashed rgb(238,241,243);
+    border-radius: 0;
+}
+body .gist .gist-data {
+    border-bottom: none;
+    border-radius: 0;
+    background-color: rgb(238,241,243);
+}
+
+body .gist .blob-wrapper {
+    border-radius: 0;
+}
+
+body .gist .highlight {
+    background-color: transparent;
+    font-family: 'Droid Sans Mono', monospace;
+    font-size: 14px;
+}
+
+body .gist .highlight td {
+    padding: 5px 15px !important;
+    line-height: 1;
+    font-family: inherit;
+    font-size: inherit;
+}
+
+body .gist tr:first-child td {
+    padding-top: 15px !important;
+}
+
+body .gist tr:last-child td {
+    padding-bottom: 15px !important;
+}
+
+body .gist .blob-num {
+    color: #ced4da;
+    background-color: #495057;
+    pointer-events: none;
+} */
+ 
+body .gist .gist-meta {
+    display: none;
+} 

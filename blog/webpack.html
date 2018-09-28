@@ -1,0 +1,250 @@
+<!DOCTYPE HTML>
+
+<html>
+
+<head>
+	<title>Webpack</title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+	<link rel="icon" href="../images/favicon.ico">
+	<link rel="stylesheet" href="../assets/css/main.css" />
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-126612552-1"></script>
+	<script>
+		window.dataLayer = window.dataLayer || [];
+		function gtag() { dataLayer.push(arguments); }
+		gtag('js', new Date());
+
+		gtag('config', 'UA-126612552-1');
+	</script>
+</head>
+
+<body class="is-preload">
+
+	<!-- Wrapper -->
+	<div id="wrapper">
+
+		<!-- Main -->
+		<div id="main">
+			<div class="inner">
+				<!-- Header -->
+				<header id="header">
+					<strong>Optimizing Webpack for production</strong>
+					<ul class="icons">
+						<li><a href="https://github.com/gaurav9825" class="icon fa-github"><span class="label">Twitter</span></a></li>
+						<li><a href="https://www.linkedin.com/in/gaurav98/" class="icon fa-linkedin"><span class="label">Twitter</span></a></li>
+						<li><a href="https://bitbucket.org/gaurav9825/" class="icon fa-bitbucket"><span class="label">Twitter</span></a></li>
+						<li><a href="https://twitter.com/gaurav9825" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
+						<li><a href="https://www.facebook.com/gauravrav.k" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
+						<li><a href="https://www.instagram.com/ig2urav/" class="icon fa-instagram"><span class="label">Instagram</span></a></li>
+						<li><a href="https://medium.com/@gaurav9825" class="icon fa-medium"><span class="label">Medium</span></a></li>
+					</ul>
+				</header>
+				<br />
+				<p>10 September 2018</p>
+				<!-- Content -->
+				<h2 id="content">Omniport Optimization</h2>
+				<p>As a part of IMG, IIT-Roorkee we decided to move from old django based templates
+					to separate our backend and front-end, I was made the project leader for the frontend.We run a portal
+					called Channel I, and we have around ten apps running which all had to be converted to react apps
+					and my job was to build the frontend infrastructure.I had to start from scratch as there was no boilerplate
+					available in the market which could fulfill my need.I had to dig into the docs of webpack and babel and react
+					as it is a very big project and the bundle finally generated must be very much optimized and at the same time
+					i had to figure out how to keep such a large number of apps under one roof.
+				</p>
+				<div class="row">
+					<div class="col-12 col-12-small">
+						<h3>Brief Background</h3>
+						<p>The app is built on ReactJS and Django. It is a typical end to end application.
+						</p>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-12 col-12-small">
+						<h3>nOOb steps</h3>
+						<p>Now, as you might know, when webpack does its magic on the code, it generates a single
+							huge bundle file, that contains all the code required for front-end function. Because we
+							are working with single page applications here, this means that browser will fetch all
+							code at once which can lead to slower page loads which can be a bad experience for
+							end users.
+							<br />
+							Now this id just for three apps, but as i mentioned above we will have around ten apps
+							in production and going this way would be completely infeasible, not at all suitable for
+							deployment. I had to think of something else. <b>I needed to reduce bundle size.</b>
+						</p>
+					</div>
+					<div class="col-12 col-12-small">
+						<img src="../images/webpack-1.png" alt="">
+					</div>
+				</div>
+				<br />
+				<div class="row">
+					<div class="col-12 col-12-small">
+						<h3>Correcting some mistakes</h3>
+						<p>First step was to remove unnecessary npm modules (or unused). Doing a thorough investigation
+							of package.json and the codebase and using packages like
+							<a href="https://www.npmjs.com/package/depcheck">depcheck</a>
+							and removing unnecessary imports and corresponding packages was another tiresome job but it
+							proved to be fruitful. package.json can get get dirty when you blindly install some packages
+							for testing and then forget to remove them from dependecies.However, it took around two hours
+							to remove those unwanted packages.This reduced the bundle sizes by around 150 KB.</b>
+						</p>
+					</div>
+				</div>
+				<br />
+				<div class="row">
+					<div class="col-12 col-12-small">
+						<h3> <i>The introduction of async await</i> </h3>
+						<p>Stumbling upon reducing bundle size, I came across the concept of async await.
+							It is a new way to write asynchronous code. Previous available options were Promises and
+							callbacks. They are non blocking just like promises.
+						</p>
+					</div>
+					<script src="https://gist.github.com/gaurav9825/30f40c457e04920be1038b3948af63a4.js"></script>
+				</div>
+				<!-- Blockquote -->
+				<blockquote>An async function returns a promise implicitly, and the resolved value of the promise
+					will be whatever we return from the function.
+				</blockquote>
+				<br />
+				<div class="row">
+					<!-- Break -->
+					<div class="col-12 col-12-medium">
+						<p><b>Back on track</b></p>
+						<p>The main idea is to first break the components into finer components and then load these
+							components when needed. First step was to create a wrapper that would take a component,
+							and return another component. These wrappers are called
+							<a href="https://reactjs.org/docs/higher-order-components.html">Higher-Order Components (HOC).</a>
+							Our HOC was an <i>async container:</i> </p>
+						<script src="https://gist.github.com/gaurav9825/fdd1d2a3f7c2a5409dcff29fd8a69f29.js"></script>
+						<p>The asyncContainer function takes a component as input and renders it when the importComponent
+							resolves. This can be implemented in routes as:</p>
+					</div>
+					<script src="https://gist.github.com/gaurav9825/258fda30ba7285848b451b9dad34ac54.js"></script>
+					<p>
+						Everytime the asyncContainer is called, it will dynamicaly import the passed container. In
+						other words, when we visit / route, then a chuck file is loaded dynamically containing the
+						WelcomeContainer. his concept can be extended to individual components too. Suppose we have
+						an header that can be split into two components RightHeader and LeftHeader. So, previously
+						when header was mounted, both of these components used to come within the Header chunk,
+						but now walking on our new path we can make them mount dynamically thus separating the
+						view blocking components. An example of how header is rendered.
+					</p>
+					<script src="https://gist.github.com/gaurav9825/1733528ec24ff91341ad10a9484e7124.js"></script>
+				</div>
+				<div class="row">
+					<div class="col-12 col-12-small">
+						<h3>The mighty Webpack config</h3>
+					</div>
+					<script src="https://gist.github.com/gaurav9825/f81789e2834ff35abaa5a9bf5cc89431.js"></script>
+					<br>
+				</div>
+				<div class="row">
+					<div class="col-12 col-12-small">
+						<p>Now on running the server</p>
+					</div>
+					<p>
+						<img src="../images/webpack-2.png" alt="">
+					</p>
+					<div class="col-12 col-12-small">
+						<p>Production build webpack created around 40 chunks (because of use of async/await), that
+							will be dynamically loaded when needed.
+							This practice greatly reduced the main bundle size and we were under 100KB for app1 (
+							our landing page), this meant max 2 second for landing page loading (Achievement Unlocked).
+							You also have to include babel-pollyfill because async/await are not included in browser by default.
+						</p>
+					</div>
+					<br>
+				</div>
+				<div class="row">
+					<div class="col-12 col-12-small">
+						<h3>Final Problem</h3>
+					</div>
+					<div class="col-12 col-12-small">
+						<p>Now, after the successful deployment, the next major problem is the build time. With current config
+							the build time was around 90 seconds, too much!!. We are still working on improving the build speed,
+							but its on hold because of other feature addition to the application.</p>
+						<i>
+							I will post about how to reduce the build time in future. Till then,
+						</i>
+					</div>
+					<br>
+				</div>
+				<br />
+				<!-- Blockquote -->
+				<blockquote>
+					Patience is a conquering virtue. - <i>Geoffrey Chaucer</i>
+				</blockquote>
+			</div>
+		</div>
+		<!-- Sidebar -->
+		<div id="sidebar">
+			<div class="inner">
+				<!-- Menu -->
+				<nav id="menu">
+					<header class="major">
+						<h2>Menu</h2>
+					</header>
+					<ul>
+						<li><a href="../index.html">Home</a></li>
+						<li><a href="../generic.html">About</a></li>
+						<li><a href="../setup.html">My Setup</a></li>
+						<li><a href="../assets/resume.pdf">Resume</a></li>
+					</ul>
+				</nav>
+				<!-- Section -->
+				<section>
+					<header class="major">
+						<h2>Other Blogs</h2>
+					</header>
+					<div class="mini-posts">
+						<article>
+							<a href="hackerearth.html" class="image"><img src="../images/hackerearth.jpg" alt="hackerearth" /></a>
+							<p>Summer'18 internship at Hackerearth</p>
+						</article>
+						<article>
+							<a href="js.html" class="image"><img src="../images/js.png" alt="js" /></a>
+							<p>Diving deep into JavaScript</p>
+						</article>
+				</section>
+
+				<!-- Section -->
+				<section>
+					<header class="major">
+						<h2>Get in touch</h2>
+					</header>
+					<p>I am currently available for freelance projects as well as i am actively looking for summer internship,
+						would
+						love to get in touch if you have anything for me</p>
+					<ul class="contact">
+						<li class="fa-envelope-o">
+							<a href="mailto:gk9825@gamil.com" target="_top">gk9825@gamil.com</a>
+						</li>
+						<li class="fa-phone">(+91) 817133-1003</li>
+						<li class="fa-home">F-92 Govind Bhawan <br />
+							IIT-Roorkee, Uttrakhand 247667
+						</li>
+					</ul>
+				</section>
+
+				<!-- Footer -->
+				<footer id="footer">
+					<p class="copyright">&copy; gaurav</p>
+				</footer>
+
+
+			</div>
+		</div>
+
+	</div>
+
+	<!-- Scripts -->
+	<script src="assets/js/jquery.min.js"></script>
+	<script src="assets/js/browser.min.js"></script>
+	<script src="assets/js/breakpoints.min.js"></script>
+	<script src="assets/js/util.js"></script>
+	<script src="assets/js/main.js"></script>
+
+</body>
+
+</html>
