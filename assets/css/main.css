@@ -1897,7 +1897,7 @@ header.major > :last-child {
   border-bottom: solid 3px #f56a6a;
   display: inline-block;
   margin: 0 0 2em 0;
-  padding: 0 0.75em 0.5em 0;
+  padding: 0 0.75em 0.2em 0;
 }
 
 header.main > :last-child {
@@ -3651,12 +3651,9 @@ button:disabled,
 }
 
 .tech-stack {
-	height: 5em;
-	margin-right: 1.5em
+  height: 5em;
+  margin-right: 1.5em;
 }
-
-
-
 
 /* body .gist .gist-file {
     margin-bottom: 0;
@@ -3699,7 +3696,7 @@ body .gist .blob-num {
     background-color: #495057;
     pointer-events: none;
 } */
- 
+
 body .gist .gist-meta {
-    display: none;
-} 
+  display: none;
+}
