@@ -3,7 +3,7 @@
 <html>
 
 <head>
-	<title>Webpack</title>
+	<title>Optimizing Webpack for production</title>
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 	<link rel="icon" href="../images/favicon.ico">
@@ -18,6 +18,11 @@
 		gtag('config', 'UA-126612552-1');
 	</script>
 </head>
+<style>
+	p {
+		font-size: 1.2em
+	}
+</style>
 
 <body class="is-preload">
 
@@ -100,7 +105,9 @@
 							callbacks. They are non blocking just like promises.
 						</p>
 					</div>
-					<script src="https://gist.github.com/gaurav9825/30f40c457e04920be1038b3948af63a4.js"></script>
+					<div class="col-6 col-12-small">
+						<script src="https://gist.github.com/gaurav9825/30f40c457e04920be1038b3948af63a4.js"></script>
+					</div>
 				</div>
 				<!-- Blockquote -->
 				<blockquote>An async function returns a promise implicitly, and the resolved value of the promise
@@ -116,11 +123,15 @@
 							and return another component. These wrappers are called
 							<a href="https://reactjs.org/docs/higher-order-components.html">Higher-Order Components (HOC).</a>
 							Our HOC was an <i>async container:</i> </p>
-						<script src="https://gist.github.com/gaurav9825/fdd1d2a3f7c2a5409dcff29fd8a69f29.js"></script>
+						<div class="col-6 col-12-small">
+							<script src="https://gist.github.com/gaurav9825/fdd1d2a3f7c2a5409dcff29fd8a69f29.js"></script>
+						</div>
 						<p>The asyncContainer function takes a component as input and renders it when the importComponent
 							resolves. This can be implemented in routes as:</p>
 					</div>
-					<script src="https://gist.github.com/gaurav9825/258fda30ba7285848b451b9dad34ac54.js"></script>
+					<div class="col-8 col-12-small">
+						<script src="https://gist.github.com/gaurav9825/258fda30ba7285848b451b9dad34ac54.js"></script>
+					</div>
 					<p>
 						Everytime the asyncContainer is called, it will dynamicaly import the passed container. In
 						other words, when we visit / route, then a chuck file is loaded dynamically containing the
@@ -130,22 +141,26 @@
 						but now walking on our new path we can make them mount dynamically thus separating the
 						view blocking components. An example of how header is rendered.
 					</p>
-					<script src="https://gist.github.com/gaurav9825/1733528ec24ff91341ad10a9484e7124.js"></script>
+					<div class="col-8 col-12-small">
+						<script src="https://gist.github.com/gaurav9825/1733528ec24ff91341ad10a9484e7124.js"></script>
+					</div>
 				</div>
 				<div class="row">
 					<div class="col-12 col-12-small">
 						<h3>The mighty Webpack config</h3>
 					</div>
-					<script src="https://gist.github.com/gaurav9825/f81789e2834ff35abaa5a9bf5cc89431.js"></script>
+					<div class="col-8 col-12-small">
+						<script src="https://gist.github.com/gaurav9825/f81789e2834ff35abaa5a9bf5cc89431.js"></script>
+					</div>
 					<br>
 				</div>
 				<div class="row">
-					<div class="col-12 col-12-small">
+					<div class="col-8 col-12-small">
 						<p>Now on running the server</p>
 					</div>
-					<p>
+					<div class="col-8 col-12-small">
 						<img src="../images/webpack-2.png" alt="">
-					</p>
+					</div>
 					<div class="col-12 col-12-small">
 						<p>Production build webpack created around 40 chunks (because of use of async/await), that
 							will be dynamically loaded when needed.
@@ -187,7 +202,7 @@
 					</header>
 					<ul>
 						<li><a href="../index.html">Home</a></li>
-						<li><a href="../generic.html">About</a></li>
+						<li><a href="hackerearth.html">Blogs</a></li>
 						<li><a href="../setup.html">My Setup</a></li>
 						<li><a href="../assets/resume.pdf">Resume</a></li>
 					</ul>
@@ -239,11 +254,11 @@
 	</div>
 
 	<!-- Scripts -->
-	<script src="assets/js/jquery.min.js"></script>
-	<script src="assets/js/browser.min.js"></script>
-	<script src="assets/js/breakpoints.min.js"></script>
-	<script src="assets/js/util.js"></script>
-	<script src="assets/js/main.js"></script>
+	<script src="../assets/js/jquery.min.js"></script>
+	<script src="../assets/js/browser.min.js"></script>
+	<script src="../assets/js/breakpoints.min.js"></script>
+	<script src="../assets/js/util.js"></script>
+	<script src="../assets/js/main.js"></script>
 
 </body>
 
