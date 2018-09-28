@@ -3468,7 +3468,7 @@ button:disabled,
 }
 
 #banner .image img {
-  height: 100%;
+  height: 90%;
   -moz-object-fit: cover;
   -webkit-object-fit: cover;
   -ms-object-fit: cover;
