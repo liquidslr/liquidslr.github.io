@@ -3196,7 +3196,6 @@ button:disabled,
 }
 
 #sidebar > .inner > * {
-  border-bottom: solid 2px rgba(210, 215, 217, 0.75);
   margin: 0 0 3.5em 0;
   padding: 0 0 3.5em 0;
 }
@@ -3424,6 +3423,10 @@ button:disabled,
     position: absolute;
     right: -0.5em;
     top: 0;
+  }
+
+  .blog {
+    font-size: 0.8rem;
   }
 }
 
@@ -3655,48 +3658,30 @@ button:disabled,
   margin-right: 1.5em;
 }
 
-/* body .gist .gist-file {
-    margin-bottom: 0;
-    border: 1px dashed rgb(238,241,243);
-    border-radius: 0;
-}
-body .gist .gist-data {
-    border-bottom: none;
-    border-radius: 0;
-    background-color: rgb(238,241,243);
-}
-
-body .gist .blob-wrapper {
-    border-radius: 0;
-}
-
-body .gist .highlight {
-    background-color: transparent;
-    font-family: 'Droid Sans Mono', monospace;
-    font-size: 14px;
-}
-
-body .gist .highlight td {
-    padding: 5px 15px !important;
-    line-height: 1;
-    font-family: inherit;
-    font-size: inherit;
-}
-
-body .gist tr:first-child td {
-    padding-top: 15px !important;
-}
-
-body .gist tr:last-child td {
-    padding-bottom: 15px !important;
-}
-
-body .gist .blob-num {
-    color: #ced4da;
-    background-color: #495057;
-    pointer-events: none;
-} */
-
 body .gist .gist-meta {
   display: none;
+}
+
+@media screen and (min-width: 736px) {
+  .blog {
+    font-size: 1.4em;
+  }
+}
+
+.blog {
+  font-weight: 400;
+  padding: 0.8em 1em;
+  border-radius: 10px;
+  background: #f5f6f773;
+  font-family: sans-serif;
+  color: black;
+  margin-bottom: 1.2em;
+  display: flex;
+  justify-content: space-between;
+}
+
+.blog:hover {
+  -webkit-box-shadow: 2px 4px 6px -4px rgba(181, 163, 181, 0.47);
+  -moz-box-shadow: 2px 4px 6px -4px rgba(181, 163, 181, 0.47);
+  box-shadow: 2px 4px 6px -4px rgba(181, 163, 181, 0.47);
 }
