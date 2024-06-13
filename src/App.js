@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import './App.css';
 
 function App() {
@@ -34,10 +34,10 @@ function App() {
       setIdx(idx + 1);
       setCurrentText('');
       setCurrentIndex(0);
-      setCommandsIdx(commandsIdx + 1);
+      setCommandsIdx(idx % 2 != 0 ? commandsIdx : commandsIdx + 1);
       setText(commands[commandsIdx]);
     };
-    const delay = 800 + idx * 150;
+    const delay = 500 + idx * 100;
     const timeoutId = setTimeout(revealText, delay);
 
     return () => clearTimeout(timeoutId);
@@ -69,28 +69,28 @@ function App() {
             )}
           </div>
         )}
-        {isVisible && idx >= 3 && (
+        {isVisible && idx >= 4 && (
           <div className="code-block">
             <div>
               <span id="a">guest@optimus</span>:<span id="b">~</span>
               <span id="c">$</span>
-              <span id="z"> {idx === 3 ? currentText : commands[2]}</span>
+              <span id="z"> {idx === 4 ? currentText : commands[2]}</span>
             </div>
-            {isVisible && idx >= 4 && (
+            {isVisible && idx >= 5 && (
               <span id="e" style={{ fontWeight: 'bold' }}>
                 intro.txt
               </span>
             )}
           </div>
         )}
-        {isVisible && idx >= 4 && (
+        {isVisible && idx >= 6 && (
           <div className="code-block">
             <div>
               <span id="a">guest@optimus</span>:<span id="b">~</span>
               <span id="c">$</span>
-              <span id="z"> {idx === 4 ? currentText : commands[3]}</span>
+              <span id="z"> {idx === 6 ? currentText : commands[3]}</span>
             </div>
-            {isVisible && idx >= 5 && (
+            {isVisible && idx >= 7 && (
               <>
                 <div className="code-block" id="w">
                   <div>==============</div>
@@ -148,6 +148,18 @@ function App() {
                   <div>================</div>
                   <div id="z">
                     [<span id="link">resume</span>]
+                  </div>
+                </div>
+                <div className="code-block" id="w">
+                  <div>================</div>
+                  <div>BLOG</div>
+                  <div>================</div>
+                  <div id="z">
+                    [
+                    <span id="link">
+                      <a href="https://liquidslr.github.io/blog">link</a>
+                    </span>
+                    ]
                   </div>
                 </div>
                 <div className="code-block" id="w">
