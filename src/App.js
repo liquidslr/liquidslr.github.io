@@ -100,7 +100,8 @@ function App() {
                 <div className="code-block">
                   <span id="f">interests</span>
                   <span id="z">
-                    =['Programming Languages', 'Systems', 'Machine Learning',]
+                    =['Programming Languages', 'Distributed Systems', 'Machine
+                    Learning']
                   </span>
                 </div>
                 <div className="code-block" id="w">
@@ -112,7 +113,10 @@ function App() {
                   <div id="z">
                     [Summer 2020] <b>Senior Software Engineer</b>,{' '}
                     <span id="link">
-                      <a href="https://yojakexports.com/" target="blank">
+                      <a
+                        href="https://www.linkedin.com/company/yojak/"
+                        target="blank"
+                      >
                         Yojak
                       </a>
                     </span>
@@ -147,7 +151,8 @@ function App() {
                   <div>RÉSUMÉ</div>
                   <div>================</div>
                   <div id="z">
-                    [<span id="link">resume</span>]
+                    {/* [<span id="link">resume</span>] */}
+                    <a href="/resume.pdf">resume</a>
                   </div>
                 </div>
                 <div className="code-block" id="w">
