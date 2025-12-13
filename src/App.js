@@ -63,7 +63,7 @@ function App() {
             </div>
             {isVisible && idx >= 3 && (
               <span id="z" style={{ fontWeight: 'bold' }}>
-                cs grad student at usc, past: engineering physics at indian
+                cs grad student usc, past: engineering physics at indian
                 institue of technology roorkee
               </span>
             )}
@@ -110,8 +110,19 @@ function App() {
                   <div>================</div>
                 </div>
                 <div className="code-block">
+                <div id="z">
+                    [Summer 2025] <b>Software Development Engineer</b>,{' '}
+                    <span id="link">
+                      <a
+                        href="https://www.linkedin.com/company/amazon-web-services/"
+                        target="blank"
+                      >
+                        AWS
+                      </a>
+                    </span>
+                  </div>
                   <div id="z">
-                    [Summer 2020] <b>Senior Software Engineer</b>,{' '}
+                    [Summer 2022] <b>Senior Software Engineer</b>,{' '}
                     <span id="link">
                       <a
                         href="https://www.linkedin.com/company/yojak/"
@@ -187,7 +198,15 @@ function App() {
                         linkedin
                       </a>
                     </span>
-                    ] [
+                    ]
+                    [
+                    <span id="link">
+                      <a href="https://calendly.com/gaurav-kumar9825/30min" target="blank">
+                        calendly
+                      </a>
+                    </span>
+                    ] 
+                    [
                     <span id="link">
                       <a href="https://twitter.com/liquid_slr" target="blank">
                         twitter
